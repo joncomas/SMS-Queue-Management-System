@@ -18,7 +18,8 @@ class QueueView(APIView):
         # fill this method and update the return
         if queue.size() != 0:
             queue.dequeue()
-        elif queue.size() == 0:
+            return Response("Turn was assigned", status=status.HTTP_200_OK)
+        else:
             return Response("The list is empty, no need to dequeue", status=status.HTTP_200_OK)
 
     def post(self, request):
